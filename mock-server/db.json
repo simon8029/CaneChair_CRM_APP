@@ -1,4 +1,8 @@
 {
-  "customers": [],
-  "comments": []
+	"customers": [
+		{ "name": "John", "id": 1 },
+		{ "name": "Jean", "id": 2 },
+		{ "name": "Smith", "id": 3 }
+	],
+	"comments": []
 }

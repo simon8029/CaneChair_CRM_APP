@@ -1,21 +1,19 @@
 import React from 'react';
 
 class CustomerList extends React.Component {
-	renderCustomers(customers) {
+	render() {
+		const { customers } = this.props;
 		return (
 			<div className="customers">
 				{customers.map(customer => {
 					return (
-						<div className="customer">
+						<div key={customer.id} className="customer">
 							<h2 className="customerName">{customer.name}</h2>
 						</div>
 					);
 				})}
 			</div>
 		);
-	}
-	render() {
-		return <div>{this.renderCustomers(this.props.customers)}</div>;
 	}
 }
 

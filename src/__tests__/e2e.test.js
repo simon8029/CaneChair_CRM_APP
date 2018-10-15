@@ -9,31 +9,29 @@ let page;
 beforeAll(async () => {
 	browser = await puppeteer.launch({});
 	page = await browser.newPage();
+
+	// const customers = [
+	// 	{ name: 'John', id: 1 },
+	// 	{ name: 'Jean', id: 2 },
+	// 	{ name: 'Smith', id: 3 }
+	// ];
+	// return customers.map(c =>
+	// 	axios
+	// 		.post('http://localhost:8139/customers', c, {
+	// 			headers: { 'Content-Type': 'application/json' }
+	// 		})
+	// 		.catch(e => {
+	// 			console.log(`e:`, e);
+	// 		})
+	// );
 });
 
 afterAll(() => {
+	// return axios
+	// 	.delete('http://localhost:8139/customers?_cleanup=true')
+	// 	.catch(err => err);
+
 	browser.close();
-});
-
-beforeEach(() => {
-	console.log(`beforeEach().....:`);
-	const customers = [
-		{ name: 'John', id: 1 },
-		{ name: 'Jean', id: 2 },
-		{ name: 'Smith', id: 3 }
-	];
-	return customers.map(c =>
-		axios.post('http://localhost:8139/customers', c, {
-			headers: { 'Content-Type': 'application/json' }
-		})
-	);
-});
-
-afterEach(() => {
-	console.log(`afterEach().....:`);
-	return axios
-		.delete('http://localhost:8139/customers?_cleanup=true')
-		.catch(err => err);
 });
 
 describe('CaneChair CRM', () => {
@@ -57,8 +55,8 @@ describe('CaneChair CRM', () => {
 		});
 
 		expect(customers.length).toEqual(3);
-		expect(customers[0]).toEqual('John');
-		expect(customers[1]).toEqual('Jean');
-		expect(customers[2]).toEqual('Smith');
+		expect(customers).toContain('John');
+		expect(customers).toContain('Jean');
+		expect(customers).toContain('Smith');
 	});
 });
