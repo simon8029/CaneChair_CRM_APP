@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer';
+import axios from 'axios';
 
 const appUrlBase = 'http://localhost:3000';
 
@@ -12,6 +13,27 @@ beforeAll(async () => {
 
 afterAll(() => {
 	browser.close();
+});
+
+beforeEach(() => {
+	console.log(`beforeEach().....:`);
+	const customers = [
+		{ name: 'John', id: 1 },
+		{ name: 'Jean', id: 2 },
+		{ name: 'Smith', id: 3 }
+	];
+	return customers.map(c =>
+		axios.post('http://localhost:8139/customers', c, {
+			headers: { 'Content-Type': 'application/json' }
+		})
+	);
+});
+
+afterEach(() => {
+	console.log(`afterEach().....:`);
+	return axios
+		.delete('http://localhost:8139/customers?_cleanup=true')
+		.catch(err => err);
 });
 
 describe('CaneChair CRM', () => {
@@ -34,8 +56,9 @@ describe('CaneChair CRM', () => {
 			].map(element => element.innerText);
 		});
 
-		expect(customers.length).toEqual(2);
+		expect(customers.length).toEqual(3);
 		expect(customers[0]).toEqual('John');
 		expect(customers[1]).toEqual('Jean');
+		expect(customers[2]).toEqual('Smith');
 	});
 });
