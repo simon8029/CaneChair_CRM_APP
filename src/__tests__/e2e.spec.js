@@ -10,26 +10,26 @@ beforeAll(async () => {
 	browser = await puppeteer.launch({});
 	page = await browser.newPage();
 
-	// const customers = [
-	// 	{ name: 'John', id: 1 },
-	// 	{ name: 'Jean', id: 2 },
-	// 	{ name: 'Smith', id: 3 }
-	// ];
-	// return customers.map(c =>
-	// 	axios
-	// 		.post('http://localhost:8139/customers', c, {
-	// 			headers: { 'Content-Type': 'application/json' }
-	// 		})
-	// 		.catch(e => {
-	// 			console.log(`e:`, e);
-	// 		})
-	// );
+	const customers = [
+		{ name: 'John', id: 1 },
+		{ name: 'Jean', id: 2 },
+		{ name: 'Smith', id: 3 }
+	];
+	return customers.map(c =>
+		axios
+			.post('http://localhost:8139/customers', c, {
+				headers: { 'Content-Type': 'application/json' }
+			})
+			.catch(e => {
+				console.log(`e:`, e);
+			})
+	);
 });
 
 afterAll(() => {
-	// return axios
-	// 	.delete('http://localhost:8139/customers?_cleanup=true')
-	// 	.catch(err => err);
+	return axios
+		.delete('http://localhost:8139/customers?_cleanup=true')
+		.catch(err => err);
 
 	browser.close();
 });
