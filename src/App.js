@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Route } from 'react-router-dom';
 import CustomerContainer from './CustomerModule/components/customerContainer';
+import CustomerDetailContainer from './CustomerModule/components/customerDetailContainer';
 
 class App extends Component {
 	constructor(props) {
@@ -11,7 +13,13 @@ class App extends Component {
 		return (
 			<div className="App">
 				<h1>CaneChair CRM</h1>
-				<CustomerContainer />
+				<main>
+					<Route exact path="/" component={CustomerContainer} />
+					<Route
+						path="/customer/:id"
+						component={CustomerDetailContainer}
+					/>
+				</main>
 			</div>
 		);
 	}

@@ -9,6 +9,12 @@ class CustomerList extends React.Component {
 					return (
 						<div key={customer.id} className="customer">
 							<h2 className="customerName">{customer.name}</h2>
+							<a
+								href={`/customer/${customer.id}`}
+								className="view-detail"
+							>
+								View Detail
+							</a>
 						</div>
 					);
 				})}
