@@ -5,9 +5,9 @@ class CustomerProfile extends React.Component {
 		return (
 			<div>
 				<div>Profile</div>
-				<div className="customer-profile">
+				<h2 className="customer-profile">
 					{this.props.customer.profile}
-				</div>
+				</h2>
 			</div>
 		);
 	}
