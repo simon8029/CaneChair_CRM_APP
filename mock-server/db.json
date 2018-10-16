@@ -1,4 +1,20 @@
 {
-  "customers": [],
+  "customers": [
+    {
+      "name": "John",
+      "id": 1,
+      "profile": "John's profile"
+    },
+    {
+      "name": "Jean",
+      "id": 2,
+      "profile": "Jean's profile"
+    },
+    {
+      "name": "Smith",
+      "id": 3,
+      "profile": "Smith's profile"
+    }
+  ],
   "comments": []
 }

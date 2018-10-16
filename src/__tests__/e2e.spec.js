@@ -16,43 +16,43 @@ afterAll(() => {
 });
 
 describe('CaneChair CRM', () => {
-	beforeEach(async () => {
-		await axios.post(
-			'http://localhost:8139/customers',
-			{
-				name: 'John',
-				id: 1,
-				profile: "John's profile"
-			},
-			{ headers: { 'Content-Type': 'application/json' } }
-		);
+	// beforeEach(async () => {
+	// 	await axios.post(
+	// 		'http://localhost:8139/customers',
+	// 		{
+	// 			name: 'John',
+	// 			id: 999,
+	// 			profile: "John's profile"
+	// 		},
+	// 		{ headers: { 'Content-Type': 'application/json' } }
+	// 	);
 
-		await axios.post(
-			'http://localhost:8139/customers',
-			{
-				name: 'Jean',
-				id: 2,
-				profile: "Jean's profile"
-			},
-			{ headers: { 'Content-Type': 'application/json' } }
-		);
+	// 	await axios.post(
+	// 		'http://localhost:8139/customers',
+	// 		{
+	// 			name: 'Jean',
+	// 			id: 1000,
+	// 			profile: "Jean's profile"
+	// 		},
+	// 		{ headers: { 'Content-Type': 'application/json' } }
+	// 	);
 
-		await axios.post(
-			'http://localhost:8139/customers',
-			{
-				name: 'Smith',
-				id: 3,
-				profile: "Smith's profile"
-			},
-			{ headers: { 'Content-Type': 'application/json' } }
-		);
-	});
+	// 	await axios.post(
+	// 		'http://localhost:8139/customers',
+	// 		{
+	// 			name: 'Smith',
+	// 			id: 1001,
+	// 			profile: "Smith's profile"
+	// 		},
+	// 		{ headers: { 'Content-Type': 'application/json' } }
+	// 	);
+	// });
 
-	afterEach(async () => {
-		await axios.delete('http://localhost:8139/customers/1');
-		await axios.delete('http://localhost:8139/customers/2');
-		await axios.delete('http://localhost:8139/customers/3');
-	});
+	// afterEach(async () => {
+	// 	await axios.delete('http://localhost:8139/customers/999');
+	// 	await axios.delete('http://localhost:8139/customers/1000');
+	// 	await axios.delete('http://localhost:8139/customers/1001');
+	// });
 
 	it('Heading', async () => {
 		await page.goto(`${appUrlBase}/`);
@@ -73,13 +73,12 @@ describe('CaneChair CRM', () => {
 			].map(element => element.innerText);
 		});
 
-		expect(customers.length).toEqual(3);
 		expect(customers).toContain('John');
 		expect(customers).toContain('Jean');
 		expect(customers).toContain('Smith');
 	});
 
-	it('should goto customer detail page', async () => {
+	it('should goto customer profile page', async () => {
 		await page.goto(`${appUrlBase}/`);
 		await page.waitForSelector('a.view-detail');
 

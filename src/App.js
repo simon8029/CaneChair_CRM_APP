@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import CustomerContainer from './CustomerModule/components/customerContainer';
-import CustomerDetailContainer from './CustomerModule/components/customerDetailContainer';
+import CustomerProfileContainer from './CustomerModule/components/customerProfileContainer';
 
 class App extends Component {
 	constructor(props) {
@@ -17,7 +17,7 @@ class App extends Component {
 					<Route exact path="/" component={CustomerContainer} />
 					<Route
 						path="/customer/:id"
-						component={CustomerDetailContainer}
+						component={CustomerProfileContainer}
 					/>
 				</main>
 			</div>

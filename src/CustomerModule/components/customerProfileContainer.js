@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import CustomerProfile from './customerProfile';
 
 class CustomerProfileContainer extends React.Component {
 	constructor(props) {
@@ -23,12 +24,7 @@ class CustomerProfileContainer extends React.Component {
 
 	render() {
 		const { customer } = this.state;
-		return (
-			<div>
-				<div>Profile</div>
-				<div className="customer-profile">{customer.profile}</div>
-			</div>
-		);
+		return <CustomerProfile customer={customer} />;
 	}
 }
 
